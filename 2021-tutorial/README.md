@@ -126,3 +126,50 @@ Break out the app into some small components
         },
     },
 ```
+
+## 5. Loops
+
+```vue
+app.component('login-form', {
+    template: `
+        <form @submit.prevent="handleSubmit">
+        <h2>{{ title }}</h2>
+        <custom-input 
+            v-for="(input, idx) in inputs" 
+            :key="idx" 
+            :label="input.label" 
+            :type="input.type" 
+            v-model="input.value" 
+        />
+        <button>Login</button>
+        </form>
+    `,
+    component: ['custom-input'],
+    data: function () {
+        return {
+            title: 'Login Form',
+            inputs: [
+                {
+                    label: 'Email',
+                    value: '',
+                    type: 'email',
+                },
+                {
+                    label: 'Password',
+                    value: '',
+                    type: 'password',
+                },
+            ],
+            email: '',
+            password: '',
+            emailLabel: 'Email',
+            passwordLabel: 'Password',
+        };
+    },
+    methods: {
+        handleSubmit() {
+            alert(this.inputs[0].value + ' ' + this.inputs[1].value);
+        },
+    },
+});
+```
