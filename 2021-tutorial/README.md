@@ -75,3 +75,54 @@ Break out the app into some small components
     },
     });
 ```
+
+## 4. Passing `props`
+
+```vue
+    app.component('login-form', {
+    template: `
+        <form @submit.prevent="handleSubmit">
+        <h2>{{ title }}</h2>
+        <custom-input :label="emailLabel" v-model="email" />
+        <custom-input :label="passwordLabel" v-model="password" />
+        <button>Login</button>
+        </form>
+    `,
+    component: ['custom-input'],
+    data: function () {
+        return {
+        title: 'Login Form',
+        email: '',
+        password: '',
+        emailLabel: 'Email',
+        passwordLabel: 'Password',
+        };
+    },
+    methods: {
+        handleSubmit() {
+        alert(this.email + ' ' + this.password);
+        },
+    },
+    });
+```
+
+```vue
+    app.component('custom-input', {
+    template: `
+        <label>
+        {{ label }}
+        </label>
+        <input type="text" v-model="inputValue" />
+    `,
+    props: ['label', 'modelValue'],
+    computed: {
+        inputValue: {
+        get() {
+            return this.modelValue;
+        },
+        set(value) {
+            this.$emit('update:modelValue', value);
+        },
+        },
+    },
+```
