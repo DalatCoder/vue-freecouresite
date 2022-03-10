@@ -42,3 +42,36 @@ Event modifier
 - `keyup` event fired only when user press the `enter` key: `@keyup.enter="greet(greeting + '!!!!!')"`
 - `@click.right`: fired when user click the right mouse
 - `@click.prevent`: `preventDefault`
+
+## 3. Components
+
+Break out the app into some small components
+
+```vue
+    <login-form />
+```
+
+```vue
+    app.component('login-form', {
+    template: `
+        <form @submit.prevent="handleSubmit">
+        <h2>{{ title }}</h2>
+        <input type="email" v-model="email" />
+        <input type="password" v-model="password" />
+        <button>Login</button>
+        </form>
+    `,
+    data: function () {
+        return {
+        title: 'Login Form',
+        email: '',
+        password: '',
+        };
+    },
+    methods: {
+        handleSubmit() {
+        alert(this.email + ' ' + this.password);
+        },
+    },
+    });
+```

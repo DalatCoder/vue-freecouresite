@@ -7,55 +7,52 @@
     <title>Vue 3 Basics</title>
 
     <style>
-      .box {
-        background-color: purple;
-        height: 200px;
-        width: 200px;
-      }
       [v-cloak] {
         display: none;
+      }
+      input {
+        margin: 10px;
+        display: block;
       }
     </style>
   </head>
   <body>
     <div id="app" v-cloak>
-      <h1>{{ greeting }}</h1>
-
-      <dir>
-        <input
-          @keyup.enter="greet(greeting + '!!!!!')"
-          type="text"
-          v-model="greeting"
-        />
-      </dir>
-
-      <hr />
-
-      <button v-on:click="isVisible = !isVisible">Toggle Box</button>
-      <button @click="isVisible = !isVisible">Toggle Box 1</button>
-      <button @click="toggleBox">Toggle Box 2</button>
-      <div v-if="isVisible" class="box"></div>
+      <login-form />
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
     <script>
       let options = {
         data: function () {
+          return {};
+        },
+        methods: {},
+      };
+      let app = Vue.createApp(options);
+
+      app.component('login-form', {
+        template: `
+          <form @submit.prevent="handleSubmit">
+            <h2>{{ title }}</h2>
+            <input type="email" v-model="email" />
+            <input type="password" v-model="password" />
+            <button>Login</button>
+          </form>
+        `,
+        data: function () {
           return {
-            greeting: 'Hello Vue 3!',
-            isVisible: false,
+            title: 'Login Form',
+            email: '',
+            password: '',
           };
         },
         methods: {
-          toggleBox() {
-            this.isVisible = !this.isVisible;
-          },
-          greet(greeting) {
-            alert(greeting);
+          handleSubmit() {
+            alert(this.email + ' ' + this.password);
           },
         },
-      };
-      let app = Vue.createApp(options);
+      });
 
       app.mount('#app');
     </script>
