@@ -26,3 +26,19 @@ Basic app
       app.mount('#app');
     </script>
 ```
+
+## 2. Events & Methods
+
+To handle events
+
+- Use directive: `v-on:[event]`: `v-on:click="isVisible = !isVisible"`
+- Use `@`: `@click="isVisible = !isVisible"`
+- Use `@` with handler method: `@click="toggleBox"`
+- Use `@` with handler method with parameters: `@click="toggleBox(1, 2, 3)"`
+
+Event modifier
+
+- `keyup` event: `@keyup="greet(greeting + '!!!!!')"`
+- `keyup` event fired only when user press the `enter` key: `@keyup.enter="greet(greeting + '!!!!!')"`
+- `@click.right`: fired when user click the right mouse
+- `@click.prevent`: `preventDefault`
