@@ -173,3 +173,10 @@ app.component('login-form', {
     },
 });
 ```
+
+## 6. Lifecycle Hooks
+
+- Check if user is authorized
+- API calls
+- Creating or removing events
+- Getting or cleaning up data
