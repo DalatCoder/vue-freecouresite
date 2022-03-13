@@ -1,9 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header class="top-bar spread">
+    <nav class="top-bar-nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/products">Products</router-link>
+      <router-link to="/past-orders">Past Orders</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
+    <!-- <a @click="toggleSidebar" class="top-bar-cart-link">
+      <i class="icofont-cart-alt icofont-1x"></i>
+      <span>Cart ({{ totalQuantity }})</span>
+    </a> -->
+  </header>
+  <router-view />
 </template>
 
 <style>
