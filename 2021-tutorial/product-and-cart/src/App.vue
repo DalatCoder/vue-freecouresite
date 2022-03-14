@@ -69,6 +69,9 @@ export default {
     removeItem (key) {
       delete this.cart[key]
     }
+  },
+  mounted () {
+    document.title = 'Product And Cart'
   }
 }
 </script>
