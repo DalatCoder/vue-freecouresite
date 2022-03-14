@@ -55,13 +55,12 @@ export default {
     }
   },
   methods: {
-    addToCart (name, index) {
+    addToCart (name, index, quantity) {
       if (!this.cart[name]) {
         this.cart[name] = 0
       }
 
-      this.cart[name] += this.inventory[index].quantity
-      this.inventory[index].quantity = 0
+      this.cart[name] += quantity
       console.log(this.cart)
     },
     toggleSidebar () {
