@@ -53,15 +53,9 @@
 </template>
 
 <script>
-import food from '@/food.json'
-
 export default {
   name: 'HomeView',
-  data () {
-    return {
-      inventory: food
-    }
-  },
-  components: {}
+  components: {},
+  props: ['inventory']
 }
 </script>
